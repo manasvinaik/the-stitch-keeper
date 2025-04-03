@@ -1,0 +1,278 @@
+@font-face {
+    font-family: 'DOS';
+    src: url('media/dos.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Adelia';
+    src: url('media/adelia.ttf') format('truetype');
+}
+
+/* General Styling */
+body {
+    cursor: url('media/pulsingheart.gif'), auto;
+    background-image: url('media/w2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    height: 100vh;
+    text-align: center;
+    font-family: 'DOS', sans-serif;
+}
+
+a:hover, button:hover, input:hover, label:hover {
+    cursor: url('media/move.gif'), auto;
+}
+
+#music-button:hover, #info-button:hover , #heart-button:hover {
+    cursor: url('media/move.gif'), auto;
+}
+
+.top-right {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+#info-button {
+    color: white;
+    font-size: 1.5rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Info Box */
+#info-box {
+    font-family: 'DOS', sans-serif;
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    width: 300px;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+#info-box a {
+    color: #ff4d7e;
+    text-decoration: none;
+}
+
+#info-box button {
+    margin-top: 5px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+/* Music Button */
+#music-button {
+    font-size: 2rem;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/* Title */
+.title {
+    font-size: 5rem;
+    margin-bottom: 40px;
+    font-family: 'Adelia', serif;
+}
+
+/* Project Name Display */
+.project-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 25px;
+}
+
+#project-display {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+#display-name {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff4d7e;
+    outline: none;
+    cursor: text;
+}
+
+/* Input Section */
+.input-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.stitches-input {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+label {
+    font-size: 1.5rem;
+    color: black;
+}
+
+input[type="number"] {
+    font-size: 1.5rem;
+    color: #ff4d7e;
+    text-align: center;
+    width: 80px;
+    background: none;
+    padding: 10px;
+    border: 2px solid #ff4d7e;
+    border-radius: 8px;
+    font-family: 'DOS', sans-serif;
+}
+
+/* Counter Box */
+#div-pip-container {
+    background: none;
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    margin: 25px auto;
+}
+
+.div-counters {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Counter Buttons */
+.button-counter {
+    width: 160px;
+    height: 100px;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#stitches-counter,
+#rows-counter {
+    font-size: 2.2rem;
+    font-weight: bold;
+    font-family: 'DOS', sans-serif;
+}
+
+#stitches-counter-text,
+#rows-counter-text {
+    font-size: 1.4rem;
+    font-family: 'DOS', sans-serif; 
+}
+
+.button-main {
+    font-size: 1.5rem;
+    padding: 15px 20px;
+    border-radius: 10px;
+    background-color: #ff7b9c;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-family: 'DOS', sans-serif; 
+}
+
+.button-main:hover {
+    background-color: #ff4d7e;
+}
+
+/* Button Container */
+.div-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+#button-small-window {
+    background-color: #ff6699;
+    border: 1px white solid;
+    font-size: 1.5rem;
+    font-family: 'DOS', sans-serif;
+}
+
+/* Help Button */
+#button-help {
+    font-size: 2rem;
+    background: transparent;
+    border: none;
+    color: #ff6699;
+}
+
+/* Music Controls */
+.music-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.music-button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #ff4d7e;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.music-button:hover {
+    color: darkred;
+}
+
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .title {
+        font-size: 3rem;
+    }
+
+    #project-display {
+        font-size: 1.6rem;
+    }
+
+    #display-name {
+        font-size: 1.8rem;
+    }
+
+    .button-counter {
+        width: 140px;
+        height: 90px;
+        font-size: 1.8rem;
+    }
+
+    .button-main {
+        font-size: 1.4rem;
+        padding: 12px 18px;
+    }
+}
