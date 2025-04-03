@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aithere's Stitch Keeper</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="utils.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-right">
+        <button id="info-button">ⓘ</button>
+    </div>
+
+    <!-- Info Box -->
+    <div id="info-box">
+        <p>
+            This is an HTML website <b>'The Stitch Keeper'</b> made by Manasvi Naik,
+            heavily inspired by <a href="https://github.com/Tales-Carvalho/stitches-and-rows" target="_blank">Stitches and Rows</a>
+            by Tales Carvalho.
+        </p>
+        <p>Click on ♬ to play music!</p>
+        <p>If you like my site, please heart it! ❤️ <span id="heart-counter">0</span></p>
+        <button id="heart-button">❤️</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+        <button id="music-button">♬</button>
+        <h1 class="title">The Stitch Keeper</h1>
+
+        <!-- Project Name Input -->
+        <div class="project-input">
+            <div id="project-display">
+                Working on: <span id="display-name" contenteditable="true">Nothing! (Edit this)</span>
+            </div>
+        </div>
+        
+        <div class="input-section">
+            <div class="stitches-input">
+                <input type="number" id="input-stitches" min="1" value="0">
+                <label for="input-stitches">Stitches per row</label>
+            </div>
+            
+            <div class="checkbox-wrapper">
+                <input type="checkbox" id="input-autoincrease">
+                <label for="input-autoincrease">Auto-increase rows</label>
+            </div>
+        </div>
+
+        <div id="div-pip-container">
+            <div id="div-pip-element">
+                <div class="div-counters">
+                    <button id="button-stitch" class="button-main button-counter">
+                        <div id="stitches-counter">0</div>
+                        <div id="stitches-counter-text">Stitches</div>
+                    </button>
+                    <button id="button-row" class="button-main button-counter">
+                        <div id="rows-counter">0</div>
+                        <div id="rows-counter-text">Rows</div>
+                    </button>
+                </div>
+                <div class="div-buttons">
+                    <button id="button-undo" class="button-main">Undo</button>
+                    <button id="button-reset" class="button-main">Reset</button>
+                </div>
+            </div>
+            <div id="div-pip-message" style="display: none;">
+                <p>In picture-in-picture mode</p>
+            </div>
+        </div>
+        <div class="div-buttons">
+            <button id="button-edit" class="button-main">Edit Values</button>
+        </div>
+        <div class="div-buttons">
+            <button id="button-small-window" class="button-main">Small Window</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("info-button").addEventListener("click", () => {
+            let infoBox = document.getElementById("info-box");
+            infoBox.style.display = (infoBox.style.display === "block") ? "none" : "block";
+        });
+
+        let heartCounter = document.getElementById("heart-counter");
+        let heartButton = document.getElementById("heart-button");
+        let hearts = localStorage.getItem("hearts") || 0;
+        heartCounter.textContent = hearts;
+
+        heartButton.addEventListener("click", () => {
+            hearts++;
+            heartCounter.textContent = hearts;
+            localStorage.setItem("hearts", hearts);
+        });
+    </script>
+</body>
+</html>
