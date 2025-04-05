@@ -4,7 +4,7 @@
 
 ---
 
-## ✨ Features
+## Features
 
 - Track **stitches** and **rows** with one click
 - **Auto-increment** rows when stitches reach a user-defined limit
