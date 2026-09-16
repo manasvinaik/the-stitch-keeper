@@ -1,101 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aithere's Stitch Keeper</title>
+
+    <title>The Stitch Keeper</title>
+
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="media/heart.png">
+
     <script src="utils.js" defer></script>
     <script src="script.js" defer></script>
 </head>
-<body>
-    <!-- Top Bar -->
-    <div class="top-right">
-        <button id="info-button">ⓘ</button>
-    </div>
 
-    <!-- Info Box -->
+
+<body>
+
+    <!-- =====================================================
+         MAIN RETRO WINDOW
+    ====================================================== -->
+
+    <main class="main">
+
+
+        <!-- =================================================
+             TITLE BAR 1
+             Window title + minimize/maximize/close
+        ================================================== -->
+
+        <div class="titlebar window-titlebar">
+
+            <div class="window-title">
+                <span class="window-icon">✦</span>
+                <span>all good things are handmade</span>
+            </div>
+
+            <div class="window-controls">
+
+                <button
+                    type="button"
+                    aria-label="Minimize"
+                >
+                    _
+                </button>
+
+                <button
+                    type="button"
+                    aria-label="Maximize"
+                >
+                    □
+                </button>
+
+                <button
+                    type="button"
+                    aria-label="Close"
+                >
+                    ×
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             TITLE BAR 2
+             File / Edit / View / Favorites / Music / Info
+        ================================================== -->
+
+        <div class="titlebar menu-titlebar">
+
+            <div class="menu-links">
+
+                <button type="button">FILE</button>
+                <button type="button">EDIT</button>
+                <button type="button">VIEW</button>
+                <button type="button">FAVORITES</button>
+
+            </div>
+
+            <div class="menu-icons">
+
+                <button
+                    type="button"
+                    id="music-button"
+                    aria-label="Music"
+                >
+                    ♫
+                </button>
+
+                <button
+                    type="button"
+                    id="info-button"
+                    aria-label="Information"
+                >
+                    ⓘ
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             MAIN CONTENT
+        ================================================== -->
+
+        <div class="content">
+
+
+            <!-- =================================================
+                 HEADING
+            ================================================== -->
+
+            <h1 class="retro-title">
+                The Stitch Keeper
+            </h1>
+
+
+            <!-- =================================================
+                 BOX WINDOW
+            ================================================== -->
+
+            <div class="box-window">
+
+
+                <!-- Working On -->
+
+                <div class="project-row">
+
+                    <span class="project-label">
+                        Working on:
+                    </span>
+
+                    <span
+                        id="display-name"
+                        class="project-name"
+                        contenteditable="true"
+                        spellcheck="false"
+                    >
+                        Nothing! (Edit this)
+                    </span>
+
+                </div>
+
+
+                <!-- Stitches Per Row -->
+
+                <div class="stitches-input">
+
+                    <input
+                        type="number"
+                        id="input-stitches"
+                        min="1"
+                        value="170"
+                    >
+
+                    <label for="input-stitches">
+                        Stitches per row
+                    </label>
+
+                </div>
+
+
+                <!-- Auto Increase -->
+
+                <div class="checkbox-wrapper">
+
+                    <input
+                        type="checkbox"
+                        id="input-autoincrease"
+                    >
+
+                    <label for="input-autoincrease">
+                        Auto-increase rows
+                    </label>
+
+                </div>
+
+
+                <!-- =================================================
+                     COUNTERS
+                ================================================== -->
+
+                <div id="div-pip-container">
+
+                    <div id="div-pip-element">
+
+                        <div class="div-counters">
+
+
+                            <!-- Stitches -->
+
+                            <button
+                                id="button-stitch"
+                                class="button-main button-counter"
+                                type="button"
+                            >
+
+                                <span
+                                    id="stitches-counter"
+                                    class="counter-number"
+                                >
+                                    0
+                                </span>
+
+                                <span
+                                    id="stitches-counter-text"
+                                    class="counter-text"
+                                >
+                                    Stitches
+                                </span>
+
+                                <span class="counter-heart">
+                                    ♡
+                                </span>
+
+                            </button>
+
+
+                            <!-- Rows -->
+
+                            <button
+                                id="button-row"
+                                class="button-main button-counter"
+                                type="button"
+                            >
+
+                                <span
+                                    id="rows-counter"
+                                    class="counter-number"
+                                >
+                                    0
+                                </span>
+
+                                <span
+                                    id="rows-counter-text"
+                                    class="counter-text"
+                                >
+                                    Rows
+                                </span>
+
+                                <span class="counter-heart">
+                                    ♡
+                                </span>
+
+                            </button>
+
+                        </div>
+
+
+                        <!-- Undo / Reset -->
+
+                        <div class="div-buttons counter-actions">
+
+                            <button
+                                id="button-undo"
+                                class="button-main action-button"
+                                type="button"
+                            >
+                                Undo
+                            </button>
+
+                            <button
+                                id="button-reset"
+                                class="button-main action-button"
+                                type="button"
+                            >
+                                Reset
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PIP Message -->
+
+                    <div
+                        id="div-pip-message"
+                        style="display: none;"
+                    >
+                        <p>In picture-in-picture mode</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 MAIN ACTION BUTTONS
+                 Vertical
+            ================================================== -->
+
+            <div class="main-actions">
+
+                <button
+                    id="button-edit"
+                    class="button-main"
+                    type="button"
+                >
+                    Edit Count Values
+                </button>
+
+                <button
+                    id="button-small-window"
+                    class="button-main"
+                    type="button"
+                >
+                    Small Window
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="footer">
+
+            <span class="footer-heart">♥</span>
+            <span class="footer-heart">♥</span>
+
+            <span class="footer-text">
+                STITCH
+                <span class="footer-star">✦</span>
+                CREATE
+                <span class="footer-star">✦</span>
+                MESMERIZE
+            </span>
+
+            <span class="footer-heart">♥</span>
+            <span class="footer-heart">♥</span>
+
+        </footer>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         INFO WINDOW
+    ====================================================== -->
+
     <div id="info-box">
+
+        <button
+            id="close-info"
+            type="button"
+            aria-label="Close"
+        >
+            ×
+        </button>
+
+        <h2>About The Stitch Keeper</h2>
+
         <p>
-            This is an HTML website <b>'The Stitch Keeper'</b> made by Manasvi Naik,
-            heavily inspired by <a href="https://github.com/Tales-Carvalho/stitches-and-rows" target="_blank">Stitches and Rows</a>
+            This is an HTML website
+            <b>The Stitch Keeper</b>
+            made by Manasvi Naik.
+        </p>
+
+        <p>
+            Heavily inspired by
+            <a
+                href="https://github.com/Tales-Carvalho/stitches-and-rows"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Stitches and Rows
+            </a>
             by Tales Carvalho.
         </p>
-        <p>Click on ♬ to play music!</p>
-        <p>If you like my site, please heart it! ❤️ <span id="heart-counter">0</span></p>
-        <button id="heart-button">❤️</button>
+
+        <p>
+            Click on ♫ to play music!
+        </p>
+
+        <p>
+            If you like my site, please use it to your heart's content!
+        </p>
+
     </div>
 
-    <!-- Main Content -->
-    <div class="main">
-        <button id="music-button">♬</button>
-        <h1 class="title">The Stitch Keeper</h1>
-
-        <!-- Project Name Input -->
-        <div class="project-input">
-            <div id="project-display">
-                Working on: <span id="display-name" contenteditable="true">Nothing! (Edit this)</span>
-            </div>
-        </div>
-        
-        <div class="input-section">
-            <div class="stitches-input">
-                <input type="number" id="input-stitches" min="1" value="0">
-                <label for="input-stitches">Stitches per row</label>
-            </div>
-            
-            <div class="checkbox-wrapper">
-                <input type="checkbox" id="input-autoincrease">
-                <label for="input-autoincrease">Auto-increase rows</label>
-            </div>
-        </div>
-
-        <div id="div-pip-container">
-            <div id="div-pip-element">
-                <div class="div-counters">
-                    <button id="button-stitch" class="button-main button-counter">
-                        <div id="stitches-counter">0</div>
-                        <div id="stitches-counter-text">Stitches</div>
-                    </button>
-                    <button id="button-row" class="button-main button-counter">
-                        <div id="rows-counter">0</div>
-                        <div id="rows-counter-text">Rows</div>
-                    </button>
-                </div>
-                <div class="div-buttons">
-                    <button id="button-undo" class="button-main">Undo</button>
-                    <button id="button-reset" class="button-main">Reset</button>
-                </div>
-            </div>
-            <div id="div-pip-message" style="display: none;">
-                <p>In picture-in-picture mode</p>
-            </div>
-        </div>
-        <div class="div-buttons">
-            <button id="button-edit" class="button-main">Edit Values</button>
-        </div>
-        <div class="div-buttons">
-            <button id="button-small-window" class="button-main">Small Window</button>
-        </div>
-    </div>
-
-    <script>
-        document.getElementById("info-button").addEventListener("click", () => {
-            let infoBox = document.getElementById("info-box");
-            infoBox.style.display = (infoBox.style.display === "block") ? "none" : "block";
-        });
-
-        let heartCounter = document.getElementById("heart-counter");
-        let heartButton = document.getElementById("heart-button");
-        let hearts = localStorage.getItem("hearts") || 0;
-        heartCounter.textContent = hearts;
-
-        heartButton.addEventListener("click", () => {
-            hearts++;
-            heartCounter.textContent = hearts;
-            localStorage.setItem("hearts", hearts);
-        });
-    </script>
 </body>
+
 </html>
