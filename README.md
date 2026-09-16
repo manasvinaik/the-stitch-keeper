@@ -16,7 +16,7 @@ VISIT ✦<a href="https://yourusername.github.io/stitch-keeper/">
 - **Auto-increment** rows when stitches reach a user-defined limit
 - **Undo** and **Reset** buttons
 - Cute custom **cursor**, **fonts**, and pastel pink theme
-- Background **music player** with randomized tracks
+- Background **music player** with an instrumental track.
 - **Mini floating window** (Picture-in-Picture) so you can track while browsing elsewhere
 
 ---
