@@ -1,278 +1,1349 @@
+/* =========================================================
+   THE STITCH KEEPER
+   Retro Pink 90s UI
+========================================================= */
+
+
+/* =========================================================
+   FONTS
+========================================================= */
+
 @font-face {
-    font-family: 'DOS';
-    src: url('media/dos.ttf') format('truetype');
+    font-family: "DOS";
+    src: url("media/dos.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'Adelia';
-    src: url('media/adelia.ttf') format('truetype');
+    font-family: "Adelia";
+    src: url("media/adelia.ttf") format("truetype");
 }
 
-/* General Styling */
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root {
+    --pink-dark: #9e3158;
+    --pink-deep: #c43e6d;
+
+    --pink: #ee5f8d;
+    --pink-bright: #ff719c;
+
+    --pink-light: #ffd5e2;
+    --pink-pale: #ffeaf1;
+
+    --pink-bg: #ffe1eb;
+
+    --text: #351722;
+
+    --border-dark: #8e2b51;
+    --border-medium: #c44d73;
+
+    --white: #fff9fb;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
 body {
-    cursor: url('media/pulsingheart.gif'), auto;
-    background-image: url('media/w2.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
     margin: 0;
     padding: 0;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+body {
+    min-height: 100vh;
+
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: black;
-    height: 100vh;
-    text-align: center;
-    font-family: 'DOS', sans-serif;
+
+    padding: 20px;
+
+    background: url("media/w2.jpg") center/cover;
+
+    color: var(--text);
+
+    font-family: "DOS", monospace;
+
+    cursor: url("media/pulsingheart.gif"), auto;
 }
 
-a:hover, button:hover, input:hover, label:hover {
-    cursor: url('media/move.gif'), auto;
+
+/* =========================================================
+   CUSTOM CURSOR
+========================================================= */
+
+a:hover,
+button:hover,
+input:hover,
+label:hover {
+    cursor: url("media/move.gif"), pointer;
 }
 
-#music-button:hover, #info-button:hover , #heart-button:hover {
-    cursor: url('media/move.gif'), auto;
+
+/* =========================================================
+   MAIN WINDOW
+========================================================= */
+
+.main {
+    width: min(620px, 95vw);
+
+    /*
+        Light pink outer background.
+        This creates the visible space around
+        all four individual section boxes.
+    */
+    background: var(--pink-light);
+
+    padding: 6px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+
+    border: 3px solid var(--border-dark);
+
+    border-radius: 10px;
+
+    box-shadow:
+        5px 5px 0 rgba(71, 16, 38, 0.4),
+        inset 2px 2px 0 white;
+
+    overflow: hidden;
 }
 
-.top-right {
-    position: absolute;
-    top: 15px;
-    right: 15px;
+
+/* =========================================================
+   GENERIC TITLE BAR
+========================================================= */
+
+.titlebar {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   SECTION 1
+   WINDOW TITLE + MINIMIZE / MAXIMIZE / CLOSE
+========================================================= */
+
+.window-titlebar {
+    height: 32px;
+
+    justify-content: space-between;
+
+    padding: 4px 6px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #f486aa,
+            #db5681
+        );
+
+    border: 2px solid var(--border-dark);
+
+    border-radius: 7px;
+
+    color: white;
+
+    font-size: 12px;
+
+    text-shadow:
+        1px 1px var(--pink-dark);
+
+    box-shadow:
+        inset 1px 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+
+/* =========================================================
+   WINDOW TITLE
+========================================================= */
+
+.window-title {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    white-space: nowrap;
+}
+
+.window-icon {
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   WINDOW CONTROLS
+========================================================= */
+
+.window-controls {
+    display: flex;
+    align-items: center;
+
+    gap: 3px;
+}
+
+.window-controls button {
+    width: 21px;
+    height: 19px;
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--pink-pale);
+
+    color: var(--border-dark);
+
+    border: 1px solid var(--border-dark);
+
+    border-radius: 1px;
+
+    box-shadow:
+        inset 1px 1px 0 white;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    line-height: 1;
+}
+
+.window-controls button:hover {
+    background: white;
+}
+
+.window-controls button:active {
+    box-shadow:
+        inset 1px 1px 0 var(--border-dark);
+
+    transform: translate(1px, 1px);
+}
+
+
+/* =========================================================
+   SECTION 2
+   FILE / EDIT / VIEW / FAVORITES / MUSIC / INFO
+========================================================= */
+
+.menu-titlebar {
+    width: 100%;
+
+    height: 31px;
+
+    justify-content: space-between;
+
+    padding: 0 8px;
+
+    background: #ffe8ef;
+
+    border: 2px solid var(--border-medium);
+
+    border-radius: 7px;
+
+    color: #552338;
+
+    font-size: 10px;
+
+    box-shadow:
+        inset 1px 1px 0 white;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   MENU LINKS
+========================================================= */
+
+.menu-links {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.menu-links button,
+.menu-icons button {
+    border: none;
+
+    background: transparent;
+
+    padding: 1px 2px;
+
+    color: inherit;
+
+    font-family: "DOS", monospace;
+
+    font-size: inherit;
+
+    line-height: 1;
+}
+
+.menu-links button:hover,
+.menu-icons button:hover {
+    color: var(--pink-dark);
+
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   MUSIC / INFO
+========================================================= */
+
+.menu-icons {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+#music-button {
+    font-size: 15px;
 }
 
 #info-button {
-    color: white;
-    font-size: 1.5rem;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-}
-
-/* Info Box */
-#info-box {
-    font-family: 'DOS', sans-serif;
-    display: none;
-    position: absolute;
-    top: 50px;
-    right: 20px;
-    width: 300px;
-    background: rgba(255, 255, 255, 0.5);
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-}
-
-#info-box a {
-    color: #ff4d7e;
-    text-decoration: none;
-}
-
-#info-box button {
-    margin-top: 5px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    border: none;
-    background: none;
-}
-
-/* Music Button */
-#music-button {
-    font-size: 2rem;
-    color: white;
-    background: none;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    font-size: 13px;
 }
 
 
-/* Title */
-.title {
-    font-size: 5rem;
-    margin-bottom: 40px;
-    font-family: 'Adelia', serif;
-}
+/* =========================================================
+   SECTION 3
+   MAIN CONTENT BOX
+========================================================= */
 
-/* Project Name Display */
-.project-input {
+.content {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 550px;
+
+    padding: 28px 30px 25px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    /*
+        Your decorative yarn/cat background.
+    */
+    background-image: url("media/stbg.png");
+
+    background-size: cover;
+    background-position: center;
+
+    border: 2px solid var(--border-medium);
+
+    border-radius: 7px;
+
+    overflow: hidden;
+
+    box-shadow:
+        inset 1px 1px 0 white;
+}
+
+
+/* =========================================================
+   MAIN HEADING
+========================================================= */
+
+.retro-title {
+    margin: 0 0 25px;
+
+    color: #fff7fa;
+
+    font-family: "DOS", monospace;
+
+    font-size: clamp(36px, 7vw, 55px);
+
+    font-weight: bold;
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+
+    text-align: center;
+
+    text-shadow:
+        2px 2px 0 #a72f59,
+        3px 3px 0 #a72f59;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   INNER CONTROL BOX
+========================================================= */
+
+.box-window {
+    width: min(470px, 100%);
+
+    padding: 17px 18px 16px;
+
+    background: rgba(255, 235, 242, 0.95);
+
+    border: 2px solid var(--border-medium);
+
+    border-radius: 5px;
+
+    box-shadow:
+        inset 2px 2px 0 white,
+        inset -2px -2px 0 #d57b98;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   WORKING ON
+========================================================= */
+
+.project-row {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+
     gap: 5px;
-    margin-bottom: 25px;
+
+    margin-bottom: 17px;
+
+    font-size: 17px;
+
+    line-height: 1.4;
 }
 
-#project-display {
-    font-size: 1.8rem;
+.project-label {
     font-weight: bold;
 }
 
-#display-name {
-    font-size: 2rem;
+.project-name {
+    color: var(--pink);
+
     font-weight: bold;
-    color: #ff4d7e;
+
+    text-decoration: underline;
+
+    text-decoration-style: dotted;
+
     outline: none;
+
     cursor: text;
 }
 
-/* Input Section */
-.input-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 30px;
+.project-name:focus {
+    color: var(--pink-dark);
 }
+
+
+/* =========================================================
+   STITCHES PER ROW
+========================================================= */
 
 .stitches-input {
     display: flex;
+
     align-items: center;
-    gap: 15px;
+    justify-content: center;
+
+    gap: 9px;
+
+    margin-bottom: 11px;
+
+    font-size: 12px;
 }
 
-label {
-    font-size: 1.5rem;
-    color: black;
+.stitches-input label {
+    color: var(--text);
 }
 
-input[type="number"] {
-    font-size: 1.5rem;
-    color: #ff4d7e;
+
+/* =========================================================
+   NUMBER INPUT
+========================================================= */
+
+#input-stitches {
+    width: 68px;
+    height: 29px;
+
+    padding: 2px 4px;
+
+    background: #fffafd;
+
+    color: var(--pink-dark);
+
+    border: 2px solid var(--pink);
+
+    border-radius: 3px;
+
+    box-shadow:
+        inset 1px 1px 0 #aaa,
+        1px 1px 0 white;
+
     text-align: center;
-    width: 80px;
-    background: none;
-    padding: 10px;
-    border: 2px solid #ff4d7e;
-    border-radius: 8px;
-    font-family: 'DOS', sans-serif;
+
+    font-family: "DOS", monospace;
+
+    font-size: 12px;
+
+    outline: none;
 }
 
-/* Counter Box */
+#input-stitches:focus {
+    border-color: var(--pink-dark);
+
+    box-shadow:
+        inset 1px 1px 0 #aaa,
+        0 0 0 1px var(--pink);
+}
+
+
+/* =========================================================
+   CHECKBOX
+========================================================= */
+
+.checkbox-wrapper {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 7px;
+
+    margin-bottom: 17px;
+
+    font-size: 12px;
+}
+
+.checkbox-wrapper input {
+    appearance: none;
+
+    width: 13px;
+    height: 13px;
+
+    margin: 0;
+
+    background: white;
+
+    border: 1px solid var(--border-dark);
+
+    border-radius: 1px;
+
+    position: relative;
+
+    flex-shrink: 0;
+}
+
+.checkbox-wrapper input:checked::after {
+    content: "✓";
+
+    position: absolute;
+
+    top: -5px;
+    left: 1px;
+
+    color: var(--pink-dark);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   PIP CONTAINER
+========================================================= */
+
 #div-pip-container {
-    background: none;
-    border-radius: 12px;
-    padding: 15px;
+    width: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: fit-content;
-    margin: 25px auto;
 }
+
+#div-pip-element {
+    width: 100%;
+}
+
+
+/* =========================================================
+   COUNTERS
+========================================================= */
 
 .div-counters {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
 }
 
-/* Counter Buttons */
+
+/* =========================================================
+   COUNTER BUTTON
+========================================================= */
+
 .button-counter {
-    width: 160px;
-    height: 100px;
-    font-size: 2rem;
+    position: relative;
+
+    width: 100%;
+
+    height: 76px;
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
+
     align-items: center;
+    justify-content: center;
+
+    padding: 8px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffb3c9,
+            #ff91b0
+        );
+
+    border: 2px solid #c64a72;
+
+    border-radius: 5px;
+
+    box-shadow:
+        inset 1px 1px 0 white,
+        inset -2px -2px 0 #d45a80,
+        2px 2px 0 #a7355b;
+
+    color: var(--text);
+
+    font-family: "DOS", monospace;
+
+    cursor: url("media/move.gif"), pointer;
 }
 
-#stitches-counter,
-#rows-counter {
-    font-size: 2.2rem;
+.button-counter:hover {
+    background:
+        linear-gradient(
+            to bottom,
+            #ffc1d4,
+            #ff9bb8
+        );
+}
+
+.button-counter:active {
+    transform: translate(2px, 2px);
+
+    box-shadow:
+        inset -1px -1px 0 white,
+        inset 2px 2px 0 #a7355b;
+}
+
+
+/* =========================================================
+   COUNTER NUMBER
+========================================================= */
+
+.counter-number {
+    font-size: 25px;
+
     font-weight: bold;
-    font-family: 'DOS', sans-serif;
+
+    line-height: 1;
 }
 
-#stitches-counter-text,
-#rows-counter-text {
-    font-size: 1.4rem;
-    font-family: 'DOS', sans-serif; 
+.counter-text {
+    margin-top: 5px;
+
+    font-size: 11px;
 }
+
+
+/* =========================================================
+   COUNTER HEART
+========================================================= */
+
+.counter-heart {
+    position: absolute;
+
+    right: 7px;
+    bottom: 5px;
+
+    color: var(--pink-pale);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 20px;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   UNDO / RESET
+========================================================= */
+
+.counter-actions {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 13px;
+}
+
+.action-button {
+    min-width: 67px;
+
+    padding: 7px 13px;
+}
+
+
+/* =========================================================
+   GENERAL RETRO BUTTON
+========================================================= */
 
 .button-main {
-    font-size: 1.5rem;
-    padding: 15px 20px;
-    border-radius: 10px;
-    background-color: #ff7b9c;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s;
-    font-family: 'DOS', sans-serif; 
+    padding: 8px 15px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ffb5ca,
+            #f27fa3
+        );
+
+    border: 2px solid #bb426a;
+
+    border-radius: 5px;
+
+    color: var(--text);
+
+    box-shadow:
+        inset 1px 1px 0 white,
+        inset -2px -2px 0 #c24b70,
+        2px 2px 0 #9c2f53;
+
+    font-family: "DOS", monospace;
+
+    font-size: 12px;
+
+    cursor: url("media/move.gif"), pointer;
 }
 
 .button-main:hover {
-    background-color: #ff4d7e;
+    background:
+        linear-gradient(
+            to bottom,
+            #ffc6d6,
+            #ff94b3
+        );
 }
 
-/* Button Container */
-.div-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 15px;
+.button-main:active {
+    transform: translate(2px, 2px);
+
+    box-shadow:
+        inset -1px -1px 0 white,
+        inset 2px 2px 0 #9c2f53;
 }
+
+
+/* =========================================================
+   MAIN ACTION BUTTONS
+   EDIT VALUES + SMALL WINDOW
+   Vertical arrangement
+========================================================= */
+
+.main-actions {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 0;
+
+    margin-top: 18px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.main-actions .button-main {
+    min-width: 145px;
+
+    margin-top: 10px;
+}
+
+
+/* =========================================================
+   SMALL WINDOW BUTTON
+========================================================= */
 
 #button-small-window {
-    background-color: #ff6699;
-    border: 1px white solid;
-    font-size: 1.5rem;
-    font-family: 'DOS', sans-serif;
+    min-width: 145px;
 }
 
-/* Help Button */
-#button-help {
-    font-size: 2rem;
-    background: transparent;
-    border: none;
-    color: #ff6699;
-}
 
-/* Music Controls */
-.music-controls {
+/* =========================================================
+   SECTION 4
+   FOOTER
+========================================================= */
+
+.footer {
+    width: 100%;
+
+    min-height: 32px;
+
     display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    padding: 5px 8px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #ed83a5,
+            #d95d86
+        );
+
+    border: 2px solid var(--border-dark);
+
+    border-radius: 7px;
+
+    color: white;
+
+    font-family: "DOS", monospace;
+
+    font-size: 9px;
+
+    text-shadow:
+        1px 1px #9b3155;
+
+    box-shadow:
+        inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+
+    flex-shrink: 0;
 }
 
-.music-button {
-    background: none;
+
+/* =========================================================
+   FOOTER HEARTS
+========================================================= */
+
+.footer-heart {
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   FOOTER TEXT
+========================================================= */
+
+.footer-text {
+    letter-spacing: 1px;
+
+    white-space: nowrap;
+}
+
+.footer-star {
+    margin: 0 3px;
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   INFO BOX
+========================================================= */
+
+#info-box {
+    display: none;
+
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: min(380px, 90vw);
+
+    padding: 20px;
+
+    z-index: 100;
+
+    background: #ffe5ed;
+
+    border: 3px solid var(--border-dark);
+
+    border-radius: 8px;
+
+    box-shadow:
+        5px 5px 0 rgba(58, 12, 31, 0.45),
+        inset 2px 2px 0 white;
+
+    font-family: "DOS", monospace;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    text-align: left;
+}
+
+
+/* =========================================================
+   INFO TITLE
+========================================================= */
+
+#info-box h2 {
+    margin: 0 0 12px;
+
+    color: var(--pink-dark);
+
+    font-size: 18px;
+}
+
+#info-box p {
+    margin: 8px 0;
+}
+
+
+/* =========================================================
+   INFO LINK
+========================================================= */
+
+#info-box a {
+    color: var(--pink-dark);
+
+    font-weight: bold;
+
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   CLOSE INFO
+========================================================= */
+
+#close-info {
+    position: absolute;
+
+    top: 5px;
+    right: 7px;
+
     border: none;
-    font-size: 2rem;
-    color: #ff4d7e;
+
+    background: transparent;
+
+    color: var(--pink-dark);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 20px;
+
     cursor: pointer;
-    transition: color 0.3s;
 }
 
-.music-button:hover {
-    color: darkred;
+#close-info:hover {
+    color: #6e1e3d;
 }
 
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .title {
-        font-size: 3rem;
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 8px;
+
+        align-items: flex-start;
     }
 
-    #project-display {
-        font-size: 1.6rem;
+
+    /* Main outer window */
+
+    .main {
+        width: 100%;
+
+        padding: 5px;
+
+        gap: 5px;
     }
 
-    #display-name {
-        font-size: 1.8rem;
+
+    /* Window title */
+
+    .window-titlebar {
+        height: 30px;
+
+        padding: 3px 5px;
+
+        font-size: 10px;
+    }
+
+    .window-controls {
+        gap: 2px;
+    }
+
+    .window-controls button {
+        width: 19px;
+        height: 18px;
+
+        font-size: 12px;
+    }
+
+
+    /* Menu */
+
+    .menu-titlebar {
+        height: 29px;
+
+        padding: 0 6px;
+
+        font-size: 9px;
+    }
+
+    .menu-links {
+        gap: 7px;
+    }
+
+    .menu-icons {
+        gap: 5px;
+    }
+
+
+    /* Main content */
+
+    .content {
+        min-height: 620px;
+
+        padding: 23px 14px 22px;
+
+        border-radius: 6px;
+    }
+
+
+    /* Heading */
+
+    .retro-title {
+        font-size: 36px;
+
+        margin-bottom: 22px;
+
+        letter-spacing: -1px;
+    }
+
+
+    /* Inner box */
+
+    .box-window {
+        padding: 15px 13px;
+    }
+
+
+    /* Project */
+
+    .project-row {
+        font-size: 11px;
+    }
+
+
+    /* Inputs */
+
+    .stitches-input,
+    .checkbox-wrapper {
+        font-size: 11px;
+    }
+
+
+    #input-stitches {
+        width: 62px;
+
+        height: 27px;
+
+        font-size: 11px;
+    }
+
+
+    /* Counters */
+
+    .div-counters {
+        gap: 8px;
     }
 
     .button-counter {
-        width: 140px;
-        height: 90px;
-        font-size: 1.8rem;
+        height: 70px;
     }
 
+    .counter-number {
+        font-size: 22px;
+    }
+
+    .counter-text {
+        font-size: 10px;
+    }
+
+    .counter-heart {
+        right: 5px;
+        bottom: 4px;
+
+        font-size: 17px;
+    }
+
+
+    /* Buttons */
+
     .button-main {
-        font-size: 1.4rem;
-        padding: 12px 18px;
+        font-size: 11px;
+
+        padding: 7px 12px;
+    }
+
+    .main-actions .button-main {
+        min-width: 135px;
+    }
+
+
+    /* Footer */
+
+    .footer {
+        gap: 6px;
+
+        min-height: 30px;
+    }
+
+    .footer-heart {
+        font-size: 12px;
+    }
+
+    .footer-text {
+        font-size: 8px;
+
+        letter-spacing: 0.5px;
+    }
+
+    .footer-star {
+        margin: 0 2px;
+    }
+
+
+    /* Info */
+
+    #info-box {
+        width: 90vw;
+
+        padding: 17px;
+
+        font-size: 11px;
+    }
+
+    #info-box h2 {
+        font-size: 16px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    body {
+        padding: 5px;
+    }
+
+
+    /* Outer window */
+
+    .main {
+        padding: 4px;
+
+        gap: 4px;
+    }
+
+
+    /* First title bar */
+
+    .window-title {
+        font-size: 9px;
+    }
+
+    .window-titlebar {
+        height: 28px;
+    }
+
+    .window-controls button {
+        width: 18px;
+        height: 17px;
+
+        font-size: 11px;
+    }
+
+
+    /* Second title bar */
+
+    .menu-titlebar {
+        height: 27px;
+
+        font-size: 8px;
+    }
+
+    .menu-links {
+        gap: 5px;
+    }
+
+    .menu-icons {
+        gap: 3px;
+    }
+
+
+    /* Content */
+
+    .content {
+        min-height: 580px;
+
+        padding: 20px 10px;
+    }
+
+
+    /* Heading */
+
+    .retro-title {
+        font-size: 30px;
+
+        margin-bottom: 18px;
+    }
+
+
+    /* Inner box */
+
+    .box-window {
+        padding: 12px 10px;
+    }
+
+
+    /* Project */
+
+    .project-row {
+        font-size: 10px;
+    }
+
+
+    /* Inputs */
+
+    .stitches-input,
+    .checkbox-wrapper {
+        font-size: 10px;
+    }
+
+
+    /* Counters */
+
+    .div-counters {
+        gap: 6px;
+    }
+
+    .button-counter {
+        height: 65px;
+    }
+
+    .counter-number {
+        font-size: 20px;
+    }
+
+    .counter-text {
+        font-size: 9px;
+    }
+
+
+    /* Buttons */
+
+    .button-main {
+        font-size: 10px;
+
+        padding: 6px 10px;
+    }
+
+    .main-actions .button-main {
+        min-width: 125px;
+    }
+
+
+    /* Footer */
+
+    .footer {
+        gap: 4px;
+    }
+
+    .footer-heart {
+        font-size: 10px;
+    }
+
+    .footer-text {
+        font-size: 7px;
+
+        letter-spacing: 0;
+    }
+
+    .footer-star {
+        margin: 0 1px;
     }
 }
