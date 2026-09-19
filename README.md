@@ -2,7 +2,7 @@
 
 **The Stitch Keeper** is a cute and simple web app to help you keep track of your stitches and rows while knitting, crocheting, or doing any form of stitching. Inspired by [Stitches and Rows](https://github.com/Tales-Carvalho/stitches-and-rows) by Tales Carvalho, this version adds persistent data storage, music, and an aesthetic pink theme.
 
-VISIT ✦<a href="https://yourusername.github.io/stitch-keeper/">
+VISIT ✦<a href="https://manasvinaik.github.io/stitch-keeper/">
     <strong> THE STITCH KEEPER </strong>
   </a>✦
 
